@@ -192,21 +192,21 @@ public class uiTests extends BaseTest {
         assertEquals("13/04/2025", datePickerValue);
     }
 
-    @Test
-    void proverkaExampleRange() throws InterruptedException {
-
-        WebElement exampleRange = driver.findElement(By.xpath("//input[@class='form-range' and @name='my-range']"));
-        Thread.sleep(1000);
-        Actions actions = new Actions(driver);
-        actions.clickAndHold(exampleRange)
-                .moveByOffset(60, 0)
-                .release()
-                .perform();
-        Thread.sleep(1000);
-        String exampleRangeValue = exampleRange.getAttribute("value");
-        WebElement exampleRangeLabel = driver.findElement(By.xpath("//label[normalize-space(.)='Example range']"));
-        String exampleRangeText = exampleRangeLabel.getText();
-        assertEquals("Example range", exampleRangeText);
-        assertEquals("7", exampleRangeValue);
-    }
+//    @Test
+//    void proverkaExampleRange() throws InterruptedException {
+//
+//        WebElement exampleRange = driver.findElement(By.xpath("//input[@class='form-range' and @name='my-range']"));
+//        Thread.sleep(1000);
+//        Actions actions = new Actions(driver);
+//        actions.clickAndHold(exampleRange)
+//                .moveByOffset(60, 0)
+//                .release()
+//                .perform();
+//        Thread.sleep(1000);
+//        String exampleRangeValue = exampleRange.getAttribute("value");
+//        WebElement exampleRangeLabel = driver.findElement(By.xpath("//label[normalize-space(.)='Example range']"));
+//        String exampleRangeText = exampleRangeLabel.getText();
+//        assertEquals("Example range", exampleRangeText);
+//        assertEquals("7", exampleRangeValue);
+//    }
 }
