@@ -18,9 +18,19 @@ dependencies {
     implementation 'io.qameta.allure:allure-junit5:2.25.0'
     implementation 'commons-io:commons-io:2.16.0'
     testImplementation 'org.aeonbits.owner:owner:1.0.12'
+    implementation "io.qameta.allure:allure-rest-assured:2.29.1"
+    implementation "org.aspectj:aspectjrt:1.9.20.1" // или новее
+    implementation "org.aspectj:aspectjweaver:1.9.20.1"
 }
 
 test {
     useJUnitPlatform()
     systemProperties(System.getProperties())
+
+    reports {
+        junitXml.outputLocation = layout.buildDirectory.dir("test-results")
+        junitXml.required = true
+        html.outputLocation = layout.buildDirectory.dir("test-reports")
+        html.required = true
+    }
 }

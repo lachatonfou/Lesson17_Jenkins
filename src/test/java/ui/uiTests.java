@@ -24,7 +24,7 @@ public class uiTests {
     @BeforeEach
     void setup() {
         driver = new ChromeDriver();
-        driver.get(config.getBaseUrl());
+        driver.get(config.getBaseUrl()+"web-form.html");
         driver.manage().window().maximize();
     }
 

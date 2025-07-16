@@ -18,5 +18,20 @@ public interface TestPropertiesConfig extends Config {
 
     @Key("password")
     String getPassword();
+
+    @Key("apiBaseUrl")
+    String getApiBaseUrl();
+
+//    @Key("uiBaseUrl")
+//    String getUiBaseUrl();
+
+    @Key("login")
+    String getLogin();
+
+    @Key("password_login")
+    String getPasswordLogin();
+
+    @Key("selenium.remote.url")
+    String getSeleniumRemoteUrl();
 }
 
