@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class uiTests {
+public class uiTests extends BaseTest {
 
     WebDriver driver;
     //TestConfig config = new TestConfig();
