@@ -27,10 +27,27 @@ test {
     useJUnitPlatform()
     systemProperties(System.getProperties())
 
+    // Настройка выходных каталогов для отчетов
     reports {
-        junitXml.outputLocation = layout.buildDirectory.dir("test-results")
         junitXml.required = true
-        html.outputLocation = layout.buildDirectory.dir("test-reports")
+        junitXml.outputLocation = layout.buildDirectory.dir("test-results/junit")
         html.required = true
+        html.outputLocation = layout.buildDirectory.dir("reports/tests")
+    }
+
+    // Для обработки исключений при генерации отчетов
+    ignoreFailures = false
+
+    // Настройка вывода логов
+    testLogging {
+        events "passed", "skipped", "failed"
+        showStandardStreams = true
+    }
+
+    allure {
+        version = '2.24.0'
+        useJUnit5 {
+            version = '2.24.0'
+        }
     }
 }
