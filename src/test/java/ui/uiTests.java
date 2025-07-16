@@ -13,19 +13,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class uiTests extends BaseTest {
 
-    //WebDriver driver;
-    //TestConfig config = new TestConfig();
-    //String BASE_URL = config.getBaseUrl();
+    WebFormPage webFormPage;
 
-    //Properties properties = new Properties();
-    //String baseUrl = properties.getProperty("baseUrl");
-
-    //TestPropertiesConfig config = ConfigFactory.create(TestPropertiesConfig.class, System.getProperties());
-
+    @BeforeEach
+    void setupWebForm() {
+        webFormPage = new WebFormPage(driver, longWait);
+    }
 
     @Test
     void proverkaTextInput() throws InterruptedException {
-        WebFormPage webFormPage = new WebFormPage(driver, longWait);
 
         webFormPage.inputTextInput();
         String enteredValue = webFormPage.getTextInput().getAttribute("value");
@@ -40,7 +36,7 @@ public class uiTests extends BaseTest {
 
     @Test
     void proverkaPassword() throws InterruptedException {
-        WebFormPage webFormPage = new WebFormPage(driver, longWait);
+        //WebFormPage webFormPage = new WebFormPage(driver, longWait);
 
         webFormPage.inputPassword();
         String enteredValue = webFormPage.getPassword().getAttribute("value");
@@ -55,6 +51,7 @@ public class uiTests extends BaseTest {
 
     @Test
     void proverkaTextArea() throws InterruptedException {
+        //WebFormPage webFormPage = new WebFormPage(driver, longWait);
 
         WebElement textArea = driver.findElement(By.name("my-textarea"));
         textArea.sendKeys("uwuwu");
