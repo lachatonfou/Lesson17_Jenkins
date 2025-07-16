@@ -7,40 +7,31 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
+import pages.WebFormPage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class uiTests extends BaseTest {
 
-    WebDriver driver;
+    //WebDriver driver;
     //TestConfig config = new TestConfig();
     //String BASE_URL = config.getBaseUrl();
 
     //Properties properties = new Properties();
     //String baseUrl = properties.getProperty("baseUrl");
 
-    TestPropertiesConfig config = ConfigFactory.create(TestPropertiesConfig.class, System.getProperties());
+    //TestPropertiesConfig config = ConfigFactory.create(TestPropertiesConfig.class, System.getProperties());
 
-    @BeforeEach
-    void setup() {
-        driver = new ChromeDriver();
-        driver.get(config.getBaseUrl()+"web-form.html");
-        driver.manage().window().maximize();
-    }
-
-    @AfterEach
-    void tearDown() {
-        driver.quit();
-    }
 
     @Test
     void proverkaTextInput() throws InterruptedException {
+        WebFormPage webFormPage = new WebFormPage(driver, longWait);
 
-        WebElement textInput = driver.findElement(By.id("my-text-id"));
-        textInput.sendKeys(config.getUsername());
-        String enteredValue = textInput.getAttribute("value");
+        webFormPage.inputTextInput();
+        String enteredValue = webFormPage.getTextInput().getAttribute("value");
+
         Thread.sleep(1000);
-        assertEquals(config.getUsername(), enteredValue);
+        assertEquals(webFormPage.getEnteredTextTextInput(), enteredValue);
 
         WebElement textInputLabel = driver.findElement(By.xpath("//label[normalize-space(.)='Text input']"));
         String textInputText = textInputLabel.getText();
@@ -49,12 +40,13 @@ public class uiTests extends BaseTest {
 
     @Test
     void proverkaPassword() throws InterruptedException {
+        WebFormPage webFormPage = new WebFormPage(driver, longWait);
 
-        WebElement password = driver.findElement(By.name("my-password"));
-        password.sendKeys(config.getPassword());
-        String enteredValue = password.getAttribute("value");
+        webFormPage.inputPassword();
+        String enteredValue = webFormPage.getPassword().getAttribute("value");
+
         Thread.sleep(1000);
-        assertEquals(config.getPassword(), enteredValue);
+        assertEquals(webFormPage.getEnteredTextPassword(), enteredValue);
 
         WebElement passwordLabel = driver.findElement(By.xpath("//label[normalize-space(.)='Password']"));
         String passwordText = passwordLabel.getText();
