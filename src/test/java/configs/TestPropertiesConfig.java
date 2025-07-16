@@ -33,6 +33,6 @@ public interface TestPropertiesConfig extends Config {
 
     @Key("selenium.remote.url")
     String getSeleniumRemoteUrl();
-    String remoteUrl = "http://selenium-hub:4444/wd/hub";
+    //String remoteUrl = "http://selenium-hub:4444/wd/hub";
 }
 
